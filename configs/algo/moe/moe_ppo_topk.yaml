@@ -1,0 +1,26 @@
+# @package _global_
+# Top-K MoE PPO (no SPHERE regularization)
+
+defaults:
+  - /algo/ppo/ppo
+  - _self_
+
+use_moe: true
+
+agent:
+  _target_: src.algorithms.moe.moe_ppo.SphereTopKMoEPPO
+  _partial_: True
+  policy: "TopKMoEPPOPolicy"
+  sphere_target_ratio: 0.0
+  sphere_gating_ratio: 0.0
+  sphere_use_pcgrad: false
+  sphere_scale_mode: loss
+  policy_kwargs:
+    n_experts: 10
+    top_k: 2
+    temperature: 1.0
+    apply_to:
+      actor: true
+      critic: false
+
+algo: "moe-ppo-topk"

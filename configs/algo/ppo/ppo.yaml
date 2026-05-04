@@ -1,0 +1,57 @@
+# @package _global_
+defaults:
+  - /experiment/base
+  - _self_
+
+seed: 0
+wandb_project_name: "anonymous-project"
+wandb_mode: "disabled"
+num_envs: 8
+device: "auto"
+eval_freq: 100_000
+rendering_backend: egl
+
+agent:
+  _target_: src.algorithms.base.ppo.PPO
+  _partial_: True
+  policy: "MlpPolicy"
+  seed: ${seed}
+  learning_rate: ${linear_scheduling:lin_3e-4_1e-4}
+  n_steps: 2048
+  batch_size: 256
+  n_epochs: 10
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.0
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  use_sde: false
+  sde_sample_freq: 1
+  verbose: 1
+  device: "auto"
+  policy_kwargs:
+    net_arch:
+      pi: ${arch_from:${width},${param_mult_actor},${base_width},${arch_depth}}
+      vf: ${arch_from:${width},${param_mult_critic},${base_width},${arch_depth}}
+    activation_fn: ${nn:relu}
+    # Normalization switches (actor uses global flags; critic can override)
+    use_layer_norm: false
+    use_l2_norm: false
+    use_critic_layer_norm: ${.use_layer_norm}
+    use_critic_l2_norm: ${.use_l2_norm}
+
+learn:
+  total_timesteps: 1_000_000
+  log_interval: 10
+
+total_timesteps: ${learn.total_timesteps}
+algo: "ppo"
+
+# Width scaling control
+param_mult: 1
+param_mult_actor: ${param_mult}
+param_mult_critic: ${param_mult}
+base_width: 256
+arch_depth: 3
+width: null

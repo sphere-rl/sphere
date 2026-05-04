@@ -1,0 +1,53 @@
+# @package _global_
+#
+# Minimal experiment config used by MoE-PPO Top-K scripts.
+#
+# This repo snapshot is intended for anonymous review; avoid hard-coded machine paths
+# and organization-specific identifiers. Override anything via CLI when running.
+
+# Mapping of task identifiers to environment names
+task_names:
+  hammer: "hammer-v3-goal-observable"
+  push-wall: "push-wall-v3-goal-observable"
+  faucet-close: "faucet-close-v3-goal-observable"
+  push-back: "push-back-v3-goal-observable"
+  stick-pull: "stick-pull-v3-goal-observable"
+  handle-press-side: "handle-press-side-v3-goal-observable"
+  push: "push-v3-goal-observable"
+  shelf-place: "shelf-place-v3-goal-observable"
+  window-close: "window-close-v3-goal-observable"
+  peg-unplug-side: "peg-unplug-side-v3-goal-observable"
+  h1_stand: "h1-stand-customized-v0"
+  h1_walk: "h1-walk-customized-v0"
+  h1_pole: "h1-pole-customized-v0"
+  h1_slide: "h1-slide-customized-v0"
+  h1_run: "h1-run-customized-v0"
+
+# Default task list (scripts override this via CLI).
+tasks: []
+
+# Rendering and env kwargs passed to `make_vec_env(..., env_kwargs=...)`.
+image_width: 224
+env_config:
+  width: ${image_width}
+  height: ${image_width}
+  render_mode: null
+  camera_azimuths: [125]
+
+# Shared runtime knobs (scripts override many of these).
+date_time: null
+outputs_dir: outputs
+eval_render: false
+run_name_prefix: ""
+use_crl: true
+mode: "train"
+
+# Optional VecNormalize (observation/reward normalization for SB3-style agents).
+use_vecnormalize: false
+vecnorm_norm_reward: false
+
+# Hydra: avoid creating its own output folder; training code manages `outputs_dir`.
+hydra:
+  output_subdir: null
+  job:
+    chdir: false

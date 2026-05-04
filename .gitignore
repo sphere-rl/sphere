@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+
+outputs/
+multirun/
+wandb/
+
+*.log
+*.out
+*.pkl

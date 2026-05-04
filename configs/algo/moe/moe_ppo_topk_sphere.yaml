@@ -1,0 +1,16 @@
+# @package _global_
+# Top-K MoE PPO with SPHERE regularization
+
+defaults:
+  - /algo/moe/moe_ppo_topk  # inherit baseline MoE PPO settings
+  - _self_
+
+agent:
+  _target_: src.algorithms.moe.moe_ppo.SphereTopKMoEPPO
+  _partial_: True
+  policy: "TopKMoEPPOPolicy"
+  sphere_target_ratio: 0.05
+  sphere_gating_ratio: 0.0
+  sphere_use_pcgrad: false
+
+algo: "moe-ppo-topk-sphere"
