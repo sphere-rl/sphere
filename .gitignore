@@ -1,11 +1,33 @@
+# Environments / Python caches
 .venv/
 __pycache__/
 *.pyc
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
 
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Experiment outputs
 outputs/
 multirun/
 wandb/
-
 *.log
 *.out
 *.pkl
+*.npz
+*.zip
+
+# Heavy local checkpoints / media
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.mp4
+*.gif
+
+# OS files
+.DS_Store

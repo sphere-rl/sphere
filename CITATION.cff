@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+title: "SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning"
+message: "If you use this software, please cite the SPHERE paper."
+type: software
+authors:
+  - family-names: Luo
+    given-names: Lirui
+  - family-names: Zhang
+    given-names: Guoxi
+  - family-names: Xu
+    given-names: Hongming
+  - family-names: Fang
+    given-names: Cong
+  - family-names: Li
+    given-names: Qing
+year: 2026
+license: MIT
+repository-code: "https://github.com/sphere-rl/sphere"
+url: "https://sphere-rl.github.io/"
+preferred-citation:
+  type: conference-paper
+  title: "SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning"
+  authors:
+    - family-names: Luo
+      given-names: Lirui
+    - family-names: Zhang
+      given-names: Guoxi
+    - family-names: Xu
+      given-names: Hongming
+    - family-names: Fang
+      given-names: Cong
+    - family-names: Li
+      given-names: Qing
+  conference:
+    name: "International Conference on Machine Learning"
+  year: 2026
