@@ -41,6 +41,7 @@ This repository contains the official HumanoidBench training code for the paper:
 - Top-K MoE PPO implementation in JAX / Stable-Baselines-style training code
 - HumanoidBench scripts for both the unregularized Top-K MoE baseline and SPHERE
 - Public project page: <https://sphere-rl.github.io/>
+- Reproduction records: <https://github.com/sphere-rl/sphere/releases/tag/repro-hb-crl-sphere-20260504>
 
 ## Quick Start
 
@@ -82,10 +83,6 @@ python -c "import jax; print('JAX version:', jax.__version__); print('JAX device
 
 Expected output should show a CUDA device and `gpu` backend.
 
-## Reproduction Note
-
-The public code was sanity-checked on the five-task HumanoidBench SPHERE setting before release. A fresh multi-seed run of `scripts/moe/humanoidbench/run_moe_ppo_topk_sphere_gradscale.sh` produced an overall task mean of roughly `0.532`, close to the HumanoidBench SPHERE CRL design-ablation value of `0.54` reported on the project page / paper. Per-task variance is expected across seeds and hardware.
-
 ## Running Experiments
 
 ### HumanoidBench Top-K MoE baseline
@@ -125,21 +122,6 @@ bash scripts/moe/humanoidbench/run_moe_ppo_topk_sphere_gradscale.sh \
   total_timesteps=100000 \
   num_envs=16
 ```
-
-## Results
-
-The public project page includes the main paper figures and an interactive visualization of the update-geometry diagnosis:
-
-- Project page: <https://sphere-rl.github.io/>
-- Code: <https://github.com/sphere-rl/sphere>
-
-<p align="center">
-  <img src="assets/humanoidbench_methods_success_rl_vs_crl_bars_relu_trim.png" alt="HumanoidBench SPHERE results" width="88%" />
-</p>
-
-<p align="center">
-  <img src="assets/metaworld_methods_success_rl_vs_crl_bars_trim.png" alt="MetaWorld SPHERE results" width="88%" />
-</p>
 
 ## Repository Layout
 
