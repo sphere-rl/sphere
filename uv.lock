@@ -1338,7 +1338,7 @@ wheels = [
 ]
 
 [[package]]
-name = "lm-reward-jax"
+name = "sphere"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
