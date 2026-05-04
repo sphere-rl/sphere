@@ -41,7 +41,6 @@ This repository contains the official HumanoidBench training code for the paper:
 - Top-K MoE PPO implementation in JAX / Stable-Baselines-style training code
 - HumanoidBench scripts for both the unregularized Top-K MoE baseline and SPHERE
 - Public project page: <https://sphere-rl.github.io/>
-- Reproduction records: <https://github.com/sphere-rl/sphere/releases/tag/repro-hb-crl-sphere-20260504>
 
 ## Quick Start
 
@@ -49,7 +48,13 @@ This repository contains the official HumanoidBench training code for the paper:
 uv venv --python 3.11
 source .venv/bin/activate
 uv sync --frozen
-bash scripts/moe/humanoidbench/run_moe_ppo_topk_sphere_gradscale.sh
+
+# Short one-task smoke run. Omit these Hydra overrides for the full 5-seed run.
+bash scripts/moe/humanoidbench/run_moe_ppo_topk_sphere_gradscale.sh \
+  seed=0 \
+  tasks=[h1_stand] \
+  total_timesteps=100000 \
+  num_envs=16
 ```
 
 The HumanoidBench dependency is pulled from `https://github.com/liruiluo/humanoid-bench.git` via `pyproject.toml`.
@@ -109,7 +114,7 @@ Outputs are written under:
 outputs/<algo>/<timestamp>/<run_name>/<env_name>/
 ```
 
-Each run directory contains TensorBoard logs, evaluation arrays, checkpoints, and VecNormalize state when enabled.
+Each run directory contains TensorBoard logs, evaluation arrays, checkpoints, and VecNormalize state when enabled. A public five-seed run-record bundle is attached to <https://github.com/sphere-rl/sphere/releases/tag/repro-hb-crl-sphere-20260504>.
 
 ### Override Hydra arguments
 
